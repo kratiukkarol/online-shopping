@@ -14,7 +14,7 @@
 	<context:component-scan
 		base-package="onlineShopping.controller" />
 	<context:component-scan
-		base-package="com.kratiukkarol.shoppingBackend.daoImpl" />
+		base-package="com.kratiukkarol.shoppingBackend" />
 
 
 	<bean id="viewResolver"
