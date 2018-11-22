@@ -8,6 +8,7 @@
 	<groupId>com.kratiukkarol</groupId>
 	<artifactId>shoppingBackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>shoppingBackend</name>
 	<url>http://www.maven.apache.org</url>
@@ -16,12 +17,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<hibernate.version>5.2.7.Final</hibernate.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<jackson.version>2.9.7</jackson.version>
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- JUNIT -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -62,6 +62,25 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.1.1</version>
+		</dependency>
+
+		<!-- JACKSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 	</dependencies>

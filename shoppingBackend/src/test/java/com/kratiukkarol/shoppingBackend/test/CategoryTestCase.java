@@ -79,6 +79,6 @@ public class CategoryTestCase {
 		category.setName("TV");
 		assertEquals("Successfully updated a single category in the table", true, categoryDAO.update(category));
 		assertEquals("Successfully deleted a single category from the table", true, categoryDAO.delete(category));
-		assertEquals("Successfully fetched the list of categories from the table", 1, categoryDAO.list().size());
+		assertEquals("Successfully fetched the list of categories from the table", 5, categoryDAO.list().size());
 	}
 }
