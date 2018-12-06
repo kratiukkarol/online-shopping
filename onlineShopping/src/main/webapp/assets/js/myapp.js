@@ -129,7 +129,7 @@ var $adminProductsTable = $('#adminProductsTable');
 	
 	// execute the below code only where we have this table
 	if($adminProductsTable.length) {
-		var jsonUrl = window.contexRoot + '/json/data/admin/all/products';
+		var jsonUrl = window.contextRoot + '/json/data/admin/all/products';
 		
 		
 		$adminProductsTable.DataTable({
@@ -193,7 +193,7 @@ var $adminProductsTable = $('#adminProductsTable');
 					bSortable: false,
 					mRender: function(data, type, row){
 						var str = '';
-						str += '<a href="${contextRoot}/manage/'+data+'/product" class="btn btn-warning">';
+						str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">';
 						str += '<span class="glyphicon glyphicon-pencil"></span></a>';
 						return str;
 					}
@@ -215,7 +215,7 @@ var $adminProductsTable = $('#adminProductsTable');
 							if(confirmed){
 								console.log(value);
 								
-								var activationUrl = window.contexRoot + '/manage/product/' + value + '/activation';
+								var activationUrl = window.contextRoot + '/manage/product/' + value + '/activation';
 								
 								$.post(activationUrl, function(data){
 									bootbox.alert({
@@ -234,4 +234,41 @@ var $adminProductsTable = $('#adminProductsTable');
 			}
 		});
 	}
+	
+	// ------------------------------------------------
+	//validation code for category
+	
+	var $categoryForm = $('#categoryForm');
+	if($categoryForm.length){
+		$categoryForm.validate({
+			rules: {
+				name : {
+					required: true,
+					minlength: 2
+				},
+				description: {
+					required: true
+				}
+			},
+			messages : {
+				name : {
+					required: 'Please add the category name!',
+					minlength: 'The category name should not be less than 2 characters'
+				},
+				description: {
+					required: 'Please add a description for this category!'
+				}
+			},
+			errorElement: 'em',
+			errorPlacement: function(error, element){
+				//add the new class of help-block
+				error.addClass('help-block');
+				//add the error element after the input element
+				error.insertAfter(element);
+			}
+		});
+	}
+	
+	//--------------------------
+	
 });
