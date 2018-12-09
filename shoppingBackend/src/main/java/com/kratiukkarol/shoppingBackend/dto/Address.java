@@ -1,30 +1,47 @@
 package com.kratiukkarol.shoppingBackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Address {
+import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+public class Address implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
 	private User user;
+	@NotBlank(message = "Please enter address line one!")
 	@Column(name = "address_line_one")
 	private String addressLineOne;	
+	@NotBlank(message = "Please enter address line two!")
 	@Column(name = "address_line_two")
 	private String addressLineTwo;	
+	@NotBlank(message = "Please enter City!")
 	private String city;	
+	@NotBlank(message = "Please enter State!")
 	private String state;	
+	@NotBlank(message = "Please enter country!")
 	private String country;
+	@NotBlank(message = "Please enter Postal Code!")
 	@Column(name ="postal_code")	
 	private String postalCode;
+	@Column(name="is_shipping")
 	private boolean shipping;
+	@Column(name="is_billing")
 	private boolean billing;
 	
 	
@@ -95,6 +112,13 @@ public class Address {
 				+ postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
 	}
 	
-	
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	private int userId;
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	
 }
